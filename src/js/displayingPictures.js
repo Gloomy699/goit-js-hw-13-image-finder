@@ -3,25 +3,24 @@ import "@babel/polyfill";
 import pictureCard from "../templates/picture.hbs";
 import _ from "lodash";
 import { notice, defaults } from '@pnotify/core';
-
-
+//-----------------------------------------------------------------------------------------------------//
 const refs = {
 	input: document.querySelector(".search-input"),
 	output: document.querySelector(".js-response"),
 	btnLoad: document.querySelector(".loadBtn"),
 	btnClear: document.querySelector(".js-clear")
 }
-
+//-----------------------------------------------------------------------------------------------------//
 let page = 1;
 let startPoint = 75;
 let currentHeight = 0;
 defaults.delay = '2000';
 defaults.width = '500px';
-
+//-----------------------------------------------------------------------------------------------------//
 refs.input.addEventListener("input", _.debounce(makeRequest, 500));
 refs.btnClear.addEventListener("click", clearAll);
 refs.btnLoad.addEventListener("click", makeRequest);
-refs.output.addEventListener("click", checkClick);
+//-----------------------------------------------------------------------------------------------------//
 
 function makeRequest(evt) {
 	if (evt.type === "click") {
@@ -47,7 +46,7 @@ function makeRequest(evt) {
 		})
 		.catch(error => notice({ text: `${error}` }));
 }
-
+//-----------------------------------------------------------------------------------------------------//
 function renderPage(arr) {
 	const markup = `${arr.reduce((acc, el) => acc + pictureCard(el), "")}`;
 	refs.output.insertAdjacentHTML("beforeend", markup);
@@ -59,7 +58,7 @@ function renderPage(arr) {
 		});
 	}
 }
-
+//-----------------------------------------------------------------------------------------------------//
 function checkStatusBtnLoad(total, current) {
 	if (total === current) {
 		refs.btnLoad.classList.add("visually-hidden");
@@ -67,15 +66,10 @@ function checkStatusBtnLoad(total, current) {
 		refs.btnLoad.classList.remove("visually-hidden");
 	}
 }
-
+//-----------------------------------------------------------------------------------------------------//
 function clearAll() {
 	refs.input.value = "";
 	refs.output.innerHTML = "";
 	checkStatusBtnLoad(0, 0);
 }
-
-function checkClick(evt) {
-	if (evt.target.tagName === "IMG") {
-		popup.startPopup(evt.target.dataset.url);
-	}
-}
+//-----------------------------------------------------------------------------------------------------//
