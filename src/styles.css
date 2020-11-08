@@ -1,7 +1,4 @@
-/* ------------ Common styles ----------- */
-:root {
-  --timing-function: ease-in-out;
-}
+/* ---Базовые стили--- */
 
 *,
 *::before,
@@ -42,7 +39,7 @@ img {
   overflow: hidden;
 }
 
-/* ------------ Search field styles----------- */
+/* --- Форма поиска--- */
 .search-form {
   position: fixed;
   text-align: center;
@@ -116,7 +113,7 @@ img {
   outline: none;
 }
 
-/* ------------ Response field styles ----------- */
+/* ---- оформление разметки галереии --- */
 
 .gallery {
   max-width: calc(100% - 20px);
@@ -168,9 +165,8 @@ img {
   color: #ff0000;
 }
 
-/* ------------ Load button styles ----------- */
-.loadBtn,
-.lightbox-btn-close {
+/* --- стили кнопки -- */
+.loadBtn {
   position: fixed;
   width: 85px;
   height: 85px;
@@ -188,7 +184,7 @@ img {
   cursor: pointer;
 
   color: #ffffff;
-  background-color: rgba(85, 27, 27, 0.6);
+  background-color: rgba(12, 238, 42, 0.6);
   background-position: center;
   background-repeat: no-repeat;
   box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.2);
@@ -199,14 +195,12 @@ img {
   left: 10px;
 }
 
-.loadBtn:hover,
-.lightbox-btn-close:hover {
+.loadBtn:hover {
   background-color: rgba(85, 27, 27, 0.8);
   transform: scale(1.05);
 }
 
-.loadBtn:focus,
-.lightbox-btn-close:focus {
+.loadBtn:focus {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   transform: scale(1);
 }
